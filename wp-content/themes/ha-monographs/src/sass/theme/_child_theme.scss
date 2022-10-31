@@ -1,0 +1,60 @@
+html {
+}
+
+body {
+  background-color: $off-white;
+  font-family: open-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: baskerville-display-pt, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.navbar-light {
+  .navbar-brand {
+    font-size: 2rem;
+    font-family: trajan-pro-3, serif;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #6d6e71;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: .8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #9a9a9a;
+    padding: 0 10px;
+  }
+
+  .navbar-nav .current-menu-item a {
+  }
+}
+
+/* Monographs Card List */
+
+.monographs-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  .monograph-card {
+    max-width: 25%;
+    transition: .2s fade;
+
+    div {
+      background-color: #fff;
+      margin: 10px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%);
+    }
+  }
+}
