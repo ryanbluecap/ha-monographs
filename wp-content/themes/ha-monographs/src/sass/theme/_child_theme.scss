@@ -51,10 +51,37 @@ h6 {
     max-width: 25%;
     transition: .2s fade;
 
-    div {
+    & > div {
       background-color: #fff;
       margin: 10px;
       box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.single-monograph {
+  .col-img img {
+    @media (min-width: 992px) {
+      display: block;
+      margin: 5px;
+      max-width: 15%;
+    }
+  }
+}
+
+#main {
+  a {
+    color: $green;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: scale-color($green, $lightness: 20%);
     }
   }
 }
