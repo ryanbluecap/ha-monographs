@@ -90,3 +90,9 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+
+/**
+ * Custom image sizes for HA Monographs
+ */
+add_image_size('monograph_main', 800, 1200, true );

@@ -15487,6 +15487,13 @@ h6,
   color: #9a9a9a;
   padding: 0 10px;
 }
+#main a {
+  color: #718e3b;
+}
+#main a:hover, #main a:focus, #main a:active {
+  color: #93b650;
+}
+
 /* Monographs Card List */
 .monographs-list {
   display: flex;
@@ -15506,19 +15513,60 @@ h6,
   text-decoration: none;
 }
 
+.single-monograph section {
+  background: #fff;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  padding: 20px;
+}
 @media (min-width: 992px) {
-  .single-monograph .col-img img {
+  .single-monograph img.main {
+    margin-right: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .single-monograph img.secondary {
     display: block;
     margin: 5px;
     max-width: 15%;
   }
 }
-
-#main a {
-  color: #718e3b;
+@media (min-width: 992px) {
+  .single-monograph .monograph-name,
+.single-monograph .monograph-meta {
+    padding-left: 30px;
+  }
 }
-#main a:hover, #main a:focus, #main a:active {
-  color: #93b650;
+.single-monograph h1, .single-monograph .h1 {
+  font-size: 4rem;
+  letter-spacing: 2px;
+  color: #718e3b;
+  text-transform: uppercase;
+}
+.single-monograph .monograph-name h4, .single-monograph .monograph-name .h4 {
+  color: #696969;
+}
+.single-monograph .monograph-meta h5, .single-monograph .monograph-meta .h5 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.single-monograph .usage-details a {
+  display: inline-block;
+  text-decoration: none;
+  background: #a7c471;
+  border-radius: 4px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #fff !important;
+  transition: 0.2s all;
+}
+.single-monograph .usage-details a:hover, .single-monograph .usage-details a:focus, .single-monograph .usage-details a:active {
+  background: #f2f2f2;
+  color: #a7c471 !important;
+}
+.single-monograph .copyright {
+  font-size: 0.9rem;
 }
 
 .has-blue-color,

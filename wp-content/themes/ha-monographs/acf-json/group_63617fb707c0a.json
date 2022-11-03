@@ -31,6 +31,26 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_63642e6b879b7",
+            "label": "Latin Name",
+            "name": "latin_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_63617fb7f1c8c",
             "label": "Monograph Meta",
             "name": "monograph_meta",
@@ -246,6 +266,26 @@
             "tabs": "all",
             "toolbar": "full",
             "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_63642fd1cf6dd",
+            "label": "Veterinary Use",
+            "name": "veterinary_use",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "default_value": "",
             "delay": 0
         },
         {
@@ -487,5 +527,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667336252
+    "modified": 1667510257
 }
