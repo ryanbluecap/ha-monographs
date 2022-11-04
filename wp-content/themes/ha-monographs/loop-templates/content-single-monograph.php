@@ -9,6 +9,8 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
+<a class="d-block my-4" href="/">&laquo; Back to Monographs List</a>
+
 <section class="monograph-details shadow">
     <div class="row">
         <div class="col-lg-5 col-img">
