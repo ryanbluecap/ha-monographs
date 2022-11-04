@@ -14,23 +14,21 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-5 col-img">
             <?php
                 if ( $images = get_field('image_carousel') ) :
-                $main_image_url = wp_get_attachment_image_src($images[0]['id'], 'monograph_main');
-                ?>
-                <img class="main mb-2 shadow-sm fade" src="<?php echo $main_image_url[0]; ?>" alt="<?php echo $images[0]['alt']; ?>" title="<?php echo $images[0]['title']; ?>">
+                    $primary_image_url = wp_get_attachment_image_src($images[0]['id'], 'monograph_main');
+            ?>
+                <img class="primary mb-2 shadow-sm fade" src="<?php echo $primary_image_url[0]; ?>" alt="<?php echo $images[0]['alt']; ?>" title="<?php echo $images[0]['title']; ?>">
 
-                <div class="d-flex"
+                <div class="d-flex image-carousel-nav">
+                    <ul>
                     <?php
-                        $i = 0;
                         foreach ( $images as $image ) {
-                            if ( $i !== 0 ) {
-                                $image_url = $image['url'];
-                            }
+                            $image_url = wp_get_attachment_image_src($image['id'], 'monograph_main');
                             ?>
-                            <img class="secondary mx-2" src="<?php echo esc_url( $image['url'] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>">
+                            <li><a href="<?php echo esc_url( $image_url[0] ); ?>"><img class="secondary" src="<?php echo esc_url( $image_url[0] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>"></a></li>
                             <?php
-                            $i++;
                         }
                     ?>
+                    </ul>
                 </div>
             <?php
                 endif;

@@ -15506,11 +15506,19 @@ h6,
 .monographs-list .monograph-card > div {
   background-color: #fff;
   margin: 10px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  border: 1px solid transparent;
+  transition: 0.2s all;
 }
 .monographs-list .monograph-card a {
   color: inherit;
   text-decoration: none;
+  transition: 0.2s all;
+}
+.monographs-list .monograph-card:hover > div, .monographs-list .monograph-card:focus > div, .monographs-list .monograph-card:active > div {
+  border-color: #bbd292;
+}
+.monographs-list .monograph-card:hover a, .monographs-list .monograph-card:focus a, .monographs-list .monograph-card:active a {
+  color: #93b650 !important;
 }
 
 .single-monograph section {
@@ -15519,31 +15527,69 @@ h6,
   margin-bottom: 30px;
   padding: 20px;
 }
+.single-monograph .slick-track {
+  display: flex;
+  align-items: center;
+}
+.single-monograph .slick-lightbox .slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 1000;
+  width: 80px;
+  height: 80px;
+}
+.single-monograph .slick-lightbox .slick-arrow:before {
+  font-size: 40px;
+}
+.single-monograph .image-carousel-nav ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.single-monograph .image-carousel-nav ul li {
+  margin: 5px;
+}
+@media (max-width: 991px) {
+  .single-monograph .col-img {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .single-monograph .col-img img {
+    margin-bottom: 0 !important;
+    max-width: 100px;
+  }
+}
 @media (min-width: 992px) {
-  .single-monograph img.main {
+  .single-monograph img.primary {
     margin-right: 15px;
   }
 }
-@media (min-width: 992px) {
-  .single-monograph img.secondary {
-    display: block;
-    margin: 5px;
-    max-width: 15%;
-  }
-}
 .single-monograph a.print {
-  display: block;
+  display: inline-block;
   text-decoration: none;
-  float: right;
+  margin: 30px 0;
+  float: left;
   padding: 5px 10px;
   background: #f2f2f2;
   color: #718e3b;
   transition: 0.2s all;
 }
+@media (min-width: 991px) {
+  .single-monograph a.print {
+    margin: 0;
+    float: right;
+  }
+}
 .single-monograph a.print:before {
   position: relative;
   top: 2px;
   padding-right: 25px;
+}
+.single-monograph .monograph-name,
+.single-monograph .monograph-meta {
+  clear: both;
 }
 @media (min-width: 992px) {
   .single-monograph .monograph-name,

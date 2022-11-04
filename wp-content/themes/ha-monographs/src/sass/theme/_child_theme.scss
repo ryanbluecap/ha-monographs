@@ -66,12 +66,26 @@ h6 {
     & > div {
       background-color: #fff;
       margin: 10px;
-      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 2px 1px -1px rgb(0 0 0 / 12%);
+      border: 1px solid transparent;
+      transition: .2s all;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+      transition: .2s all;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      & > div {
+        border-color: scale-color($green, $lightness: 50%);
+      }
+
+      a {
+        color: scale-color($green, $lightness: 20%) !important;
+      }
     }
   }
 }
@@ -84,28 +98,71 @@ h6 {
     padding: 20px;
   }
 
-  img.main {
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+
+  .slick-lightbox {
+    .slick-arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 1000;
+      width: 80px;
+      height: 80px;
+
+      &:before {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .image-carousel-nav {
+    ul {
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 5px;
+      }
+    }
+  }
+
+  .col-img {
+    @media (max-width: 991px) {
+      display: flex;
+      flex-wrap: wrap;
+
+      img {
+        margin-bottom: 0 !important;
+        max-width: 100px;
+      }
+    }
+  }
+
+  img.primary {
     @media (min-width: 992px) {
       margin-right: 15px;
     }
   }
 
-  img.secondary {
-    @media (min-width: 992px) {
-      display: block;
-      margin: 5px;
-      max-width: 15%;
-    }
-  }
-
   a.print {
-    display: block;
+    display: inline-block;
     text-decoration: none;
-    float: right;
+    margin: 30px 0;
+    float: left;
     padding: 5px 10px;
     background: scale-color($white, $lightness: -5%);
     color: $green;
     transition: .2s all;
+
+    @media (min-width: 991px) {
+      margin: 0;
+      float: right;
+    }
 
     &:before {
       position: relative;
@@ -116,6 +173,7 @@ h6 {
 
   .monograph-name,
   .monograph-meta {
+    clear: both;
     @media (min-width: 992px) {
       padding-left: 30px;
     }

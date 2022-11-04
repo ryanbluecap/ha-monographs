@@ -46,6 +46,25 @@ $container = get_theme_mod( 'understrap_container_type' );
 <script>
     // TODO: move to separate JS, get it to compile correctly
     jQuery(document).ready(function($){
+        /*
+        // Single monograph image carousel
+        $('.image-carousel-nav').slick({
+            slidesToShow: 3,
+            asNavFor: '.image-carousel-primary'
+        });
+
+        $('.image-carousel-primary').slick({
+            slidesToShow: 1,
+            arrows: false
+        });
+         */
+
+        $('.image-carousel-nav ul').slickLightbox({
+            itemSelector: 'li > a'
+        });
+
+        console.log('slick lightbox loaded');
+
         // Automatically fade in elements on page load
         $('.fade').addClass('show');
 
