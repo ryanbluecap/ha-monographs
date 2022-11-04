@@ -96,3 +96,4 @@ add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_co
  * Custom image sizes for HA Monographs
  */
 add_image_size('monograph_main', 800, 1200, true );
+add_image_size('monograph_in_content', 500, 800 );

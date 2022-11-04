@@ -13,12 +13,10 @@ defined( 'ABSPATH' ) || exit;
     <div class="row">
         <div class="col-lg-5 col-img">
             <?php
-                $images = get_field('image_carousel');
-
-                if ( ! empty( $images ) ) :
+                if ( $images = get_field('image_carousel') ) :
                 $main_image_url = wp_get_attachment_image_src($images[0]['id'], 'monograph_main');
                 ?>
-                <img class="main mb-2 shadow-sm" src="<?php echo $main_image_url[0]; ?>" alt="<?php echo $images[0]['alt']; ?>" title="<?php echo $images[0]['title']; ?>">
+                <img class="main mb-2 shadow-sm fade" src="<?php echo $main_image_url[0]; ?>" alt="<?php echo $images[0]['alt']; ?>" title="<?php echo $images[0]['title']; ?>">
 
                 <div class="d-flex"
                     <?php
@@ -39,15 +37,17 @@ defined( 'ABSPATH' ) || exit;
             ?>
         </div>
         <div class="col-lg-7">
+            <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
+
             <div class="monograph-name">
-                <h1 class="mt-5"><?php the_title(); ?></h1>
-                <h4><em><?php the_field('latin_name'); ?></em></h4>
+                <h1 class="mt-5 fade"><?php the_title(); ?></h1>
+                <h4 class="fade"><em><?php the_field('latin_name'); ?></em></h4>
             </div>
 
             <?php
                 while ( have_rows( 'monograph_meta') ) : the_row();
                     ?>
-                    <aside class="mt-5 monograph-meta">
+                    <aside class="mt-5 monograph-meta fade">
                         <h5>Common Name:</h5>
                         <p><?php the_sub_field('common_name'); ?></p>
 
@@ -68,7 +68,7 @@ defined( 'ABSPATH' ) || exit;
 
                         <hr class="my-4">
 
-                        <h5>Geographic Distribution</h5>
+                        <h5 class="print-margin">Geographic Distribution</h5>
 	                    <?php the_field('geographic_distribution'); ?>
 
                         <h5>Botanical Description</h5>
@@ -100,13 +100,40 @@ defined( 'ABSPATH' ) || exit;
 
             <h3>Uses</h3>
 
+            <div id="uses">
             <?php the_field('uses'); ?>
+            </div>
 
-            <hr>
+            <aside class="d-none in-content-images">
+		        <?php
+		        if ( $images = get_field('in_content_images') ) :
+                    $i = 0;
+			        foreach ( $images as $image ) {
+				        $image_url = wp_get_attachment_image_src( $image['id'], 'monograph_in_content' );
+				        ?>
+                        <img class="mb-4 alignright fade image<?php echo $i; ?>" src="<?php echo esc_url( $image_url[0] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>">
+				        <?php
+                        $i++;
+			        }
+		        endif;
+		        ?>
+            </aside>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <hr class="my-4">
 
             <h4>References</h4>
 
-            <?php the_field('references'); ?>
+            <div id="references" class="collapse" aria-expanded="false">
+                <?php the_field('references'); ?>
+            </div>
+
+            <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#references" role="button" aria-expanded="false" aria-controls="references">
+                Show More
+            </a>
         </div>
     </div>
 
@@ -139,11 +166,15 @@ defined( 'ABSPATH' ) || exit;
 
     <div class="row">
         <div class="col-lg-12">
-            <h4 class="mt-4">Scientific Research</h4>
-            <?php the_field('scientific_research'); ?>
+            <aside class="external-links">
+                <hr class="my-4">
 
-            <h4 class="mt-4">Where to Buy</h4>
-	        <?php the_field('where_to_buy'); ?>
+                <h4 class="mt-4">Scientific Research</h4>
+                <?php the_field('scientific_research'); ?>
+
+                <h4 class="mt-4">Where to Buy</h4>
+                <?php the_field('where_to_buy'); ?>
+            </aside>
         </div>
     </div>
 </section>

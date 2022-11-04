@@ -35,7 +35,7 @@
             "label": "Latin Name",
             "name": "latin_name",
             "aria-label": "",
-            "type": "text",
+            "type": "wysiwyg",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -45,10 +45,10 @@
                 "id": ""
             },
             "default_value": "",
-            "maxlength": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         },
         {
             "key": "field_63617fb7f1c8c",
@@ -71,7 +71,7 @@
                     "label": "Common Name",
                     "name": "common_name",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -80,18 +80,18 @@
                         "class": "",
                         "id": ""
                     },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
+                    "delay": 0
                 },
                 {
                     "key": "field_63617feaf1c8e",
                     "label": "Family",
                     "name": "family",
                     "aria-label": "",
-                    "type": "text",
+                    "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -100,11 +100,11 @@
                         "class": "",
                         "id": ""
                     },
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
                     "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
+                    "delay": 0
                 },
                 {
                     "key": "field_63617ff0f1c8f",
@@ -329,6 +329,34 @@
             "delay": 0
         },
         {
+            "key": "field_63651ef677ed5",
+            "label": "In-Content Images (Botanical Prints)",
+            "name": "in_content_images",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": 2,
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
+        },
+        {
             "key": "field_636187b227415",
             "label": "References",
             "name": "references",
@@ -527,5 +555,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667510257
+    "modified": 1667571493
 }
