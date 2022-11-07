@@ -39,6 +39,11 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-7">
             <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
 
+            <ul class="monograph-nav">
+                <li><a class="prev" href="#"><span class="dashicons dashicons-arrow-left-alt2"></span> Previous</a></li>
+                <li><a class="next" href="#">Next <span class="dashicons dashicons-arrow-right-alt2"></span></a></li>
+            </ul>
+
             <div class="monograph-name">
                 <h1 class="mt-5 fade"><?php the_title(); ?></h1>
                 <h4 class="fade"><em><?php the_field('latin_name'); ?></em></h4>

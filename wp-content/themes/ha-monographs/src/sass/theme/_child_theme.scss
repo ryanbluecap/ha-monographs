@@ -149,10 +149,37 @@ h6 {
     }
   }
 
+  .monograph-nav {
+    font-family: baskerville-display-pt, serif;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    max-width: 250px;
+    position: relative;
+    top: 30px;
+
+    a {
+      text-decoration: none;
+
+      span {
+        font-weight: bold;
+        font-size: 1.4rem;
+        position: relative;
+        padding-right: 30px;
+      }
+
+      &.next span {
+        padding-right: 0;
+        padding-left: 10px;
+      }
+    }
+  }
+
   a.print {
     display: inline-block;
     text-decoration: none;
-    margin: 30px 0;
+    margin: 0 0 30px;
     float: left;
     padding: 5px 10px;
     background: scale-color($white, $lightness: -5%);

@@ -40,6 +40,9 @@ function theme_enqueue_styles() {
 	// Custom fonts
 	wp_enqueue_style( ' adobe-trajan', 'https://use.typekit.net/wjr1kod.css' );
 
+	// Load Dashicons on frontend (prev/next arrows, print icon, etc.)
+	wp_enqueue_style( 'dashicons' );
+
 	// Slick and Slick Lightbox for image carousels
 	wp_enqueue_style( 'slick', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.csss' );
 	wp_enqueue_style( 'slick-theme', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css', array('slick') );
@@ -55,8 +58,6 @@ function theme_enqueue_styles() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
-
-
 
 /**
  * Load the child theme's text domain
