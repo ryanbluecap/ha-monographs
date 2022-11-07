@@ -3,6 +3,28 @@
     "title": "Monograph",
     "fields": [
         {
+            "key": "field_636965ab2d9dc",
+            "label": "Old Monograph ID",
+            "name": "old_monograph_id",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Used to match Monographs from the old Angular database to the new WordPress posts.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_6361814bf22fc",
             "label": "Image Carousel",
             "name": "image_carousel",
@@ -441,7 +463,7 @@
             "label": "Actions",
             "name": "actions",
             "aria-label": "",
-            "type": "textarea",
+            "type": "taxonomy",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -450,11 +472,14 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
+            "taxonomy": "monograph_action",
+            "add_term": 1,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "field_type": "checkbox",
+            "multiple": 0,
+            "allow_null": 0
         },
         {
             "key": "field_636188134efc9",
@@ -555,5 +580,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667571493
+    "modified": 1667857960
 }

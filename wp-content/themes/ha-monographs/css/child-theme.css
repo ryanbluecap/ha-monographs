@@ -15575,6 +15575,7 @@ h6,
   max-width: 250px;
   position: relative;
   top: 30px;
+  transition: 0.2s all;
 }
 .single-monograph .monograph-nav a {
   text-decoration: none;

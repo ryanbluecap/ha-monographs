@@ -39,6 +39,7 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-7">
             <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
 
+            <?php // TODO: show prev/next monograph names in this nav ?>
             <ul class="monograph-nav">
                 <li><a class="prev" href="#"><span class="dashicons dashicons-arrow-left-alt2"></span> Previous</a></li>
                 <li><a class="next" href="#">Next <span class="dashicons dashicons-arrow-right-alt2"></span></a></li>
