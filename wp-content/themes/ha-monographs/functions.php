@@ -100,7 +100,39 @@ function understrap_child_customize_controls_js() {
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
 
 /**
+ * Check if string is empty, with accommodation for extra quirks from the old HANE DB import.
+ */
+function ha_string_is_empty( $text ) {
+	$text = wp_strip_all_tags( $text );
+
+	if ( empty( $text ) ) {
+		return true;
+	}
+
+	if ( $text == 'N/A' || $text == 'NULL' ) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Sort monographs archive alphabetically
+ */
+add_action( 'pre_get_posts', 'ha_monographs_sort_order');
+function ha_monographs_sort_order($query){
+	if( is_post_type_archive( 'monograph' ) ) :
+		//If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
+		//Set the order ASC or DESC
+		$query->set( 'order', 'ASC' );
+		//Set the orderby
+		$query->set( 'orderby', 'title' );
+	endif;
+}
+
+/**
  * Custom image sizes for HA Monographs
  */
 add_image_size('monograph_main', 800, 1200, true );
+add_image_size('monograph_archive', 400, 600, true );
 add_image_size('monograph_in_content', 500, 800 );

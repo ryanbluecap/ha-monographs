@@ -439,89 +439,6 @@
             "delay": 0
         },
         {
-            "key": "field_636187d127418",
-            "label": "Ways to Use",
-            "name": "ways_to_use",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_636188074efc8",
-            "label": "Actions",
-            "name": "actions",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "monograph_action",
-            "add_term": 1,
-            "save_terms": 1,
-            "load_terms": 1,
-            "return_format": "id",
-            "field_type": "checkbox",
-            "multiple": 0,
-            "allow_null": 0
-        },
-        {
-            "key": "field_636188134efc9",
-            "label": "Taste",
-            "name": "taste",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_636188184efca",
-            "label": "Energy",
-            "name": "energy",
-            "aria-label": "",
-            "type": "textarea",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "rows": "",
-            "placeholder": "",
-            "new_lines": ""
-        },
-        {
             "key": "field_636188254efcb",
             "label": "Scientific Research",
             "name": "scientific_research",
@@ -580,5 +497,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1667857960
+    "modified": 1667911972
 }

@@ -15496,23 +15496,45 @@ h6,
 
 /* Monographs Card List */
 .monographs-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
+}
+@media (min-width: 600px) {
+  .monographs-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 .monographs-list .monograph-card {
-  max-width: 25%;
+  max-width: 80%;
+  margin: auto;
   transition: 0.2s fade;
+}
+@media (min-width: 600px) {
+  .monographs-list .monograph-card {
+    max-width: 50%;
+    margin: 0;
+  }
+}
+@media (min-width: 992px) {
+  .monographs-list .monograph-card {
+    max-width: 25%;
+  }
 }
 .monographs-list .monograph-card > div {
   background-color: #fff;
-  margin: 10px;
-  border: 1px solid transparent;
+  border: 1px solid #eaeaea;
   transition: 0.2s all;
 }
 .monographs-list .monograph-card a {
   color: inherit;
   text-decoration: none;
   transition: 0.2s all;
+}
+.monographs-list .monograph-card span {
+  display: block;
+}
+.monographs-list .monograph-card span p {
+  color: rgba(0, 0, 0, 0.7);
 }
 .monographs-list .monograph-card:hover > div, .monographs-list .monograph-card:focus > div, .monographs-list .monograph-card:active > div {
   border-color: #bbd292;
@@ -15566,29 +15588,33 @@ h6,
     margin-right: 15px;
   }
 }
-.single-monograph .monograph-nav {
+.single-monograph .post-navigation {
   font-family: baskerville-display-pt, serif;
   font-size: 1rem;
-  display: flex;
-  justify-content: space-between;
   list-style-type: none;
-  max-width: 250px;
   position: relative;
-  top: 30px;
+  top: 7px;
   transition: 0.2s all;
 }
-.single-monograph .monograph-nav a {
+@media (min-width: 992px) {
+  .single-monograph .post-navigation {
+    padding-right: 100px;
+  }
+}
+.single-monograph .post-navigation a {
+  display: flex;
   text-decoration: none;
 }
-.single-monograph .monograph-nav a span {
+.single-monograph .post-navigation a i {
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   position: relative;
-  padding-right: 30px;
+  padding-right: 15px;
+  top: -2px;
 }
-.single-monograph .monograph-nav a.next span {
+.single-monograph .post-navigation a[rel=next] i {
   padding-right: 0;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 .single-monograph a.print {
   display: inline-block;
@@ -15635,15 +15661,16 @@ h6,
   font-weight: 700;
   margin-top: 20px;
 }
-.single-monograph #references.collapse:not(.show) {
+.single-monograph .monograph-details .collapse:not(.show) {
   display: block;
-  height: 9 rem;
+  height: 10rem;
   overflow: hidden;
 }
 .single-monograph #references.collapsing {
   height: 3rem;
 }
 .single-monograph .btn-expand {
+  display: inline-block !important;
   margin-top: 15px;
   border: 1px solid #718e3b;
 }
@@ -15700,6 +15727,16 @@ h6,
     color: #000;
   }
 }
+.page-link {
+  color: #718e3b;
+}
+
+.page-item.active .page-link {
+  color: #718e3b;
+  font-weight: 700;
+  border-color: #718e3b;
+}
+
 .has-blue-color,
 .has-blue-color:visited {
   color: #0d6efd;

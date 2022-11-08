@@ -27,7 +27,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                     // Intro text, pulled from main content editor
 					get_template_part( 'loop-templates/content', 'page' );
 
-                    // List monographs alphabetically (TODO: add pagination)
+                    // List monographs alphabetically
 					get_template_part( 'loop-templates/content', 'monographs-list' );
 				}
 				?>

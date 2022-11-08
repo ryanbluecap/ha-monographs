@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<a class="d-block my-4" href="/">&laquo; Back to Monographs List</a>
+<a class="d-block my-4" href="<?php bloginfo('url'); ?>/monographs/">&laquo; Back to Monographs List</a>
 
 <section class="monograph-details shadow">
     <div class="row">
@@ -39,11 +39,7 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-7">
             <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
 
-            <?php // TODO: show prev/next monograph names in this nav ?>
-            <ul class="monograph-nav">
-                <li><a class="prev" href="#"><span class="dashicons dashicons-arrow-left-alt2"></span> Previous</a></li>
-                <li><a class="next" href="#">Next <span class="dashicons dashicons-arrow-right-alt2"></span></a></li>
-            </ul>
+           <?php understrap_post_nav(); ?>
 
             <div class="monograph-name">
                 <h1 class="mt-5 fade"><?php the_title(); ?></h1>
@@ -54,43 +50,67 @@ defined( 'ABSPATH' ) || exit;
                 while ( have_rows( 'monograph_meta') ) : the_row();
                     ?>
                     <aside class="mt-5 monograph-meta fade">
-                        <h5>Common Name:</h5>
-                        <p><?php the_sub_field('common_name'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('common_name' ) ) ) { ?>
+                            <h5>Common Name:</h5>
+                            <p><?php the_sub_field('common_name'); ?></p>
+                        <?php } ?>
 
-                        <h5>Family:</h5>
-                        <p><?php the_sub_field('family'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('family' ) ) ) { ?>
+                            <h5>Family:</h5>
+                            <p><?php the_sub_field('family'); ?></p>
+                        <?php } ?>
 
-                        <h5>TCM Name:</h5>
-                        <p><?php the_sub_field('tcm_name'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('tcm_name' ) ) ) { ?>
+                            <h5>TCM Name:</h5>
+                            <p><?php the_sub_field('tcm_name'); ?></p>
+                        <?php } ?>
 
-                        <h5>Ayurvedic Name:</h5>
-                        <p><?php the_sub_field('ayurvedic_name'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('ayurvedic_name' ) ) ) { ?>
+                            <h5>Ayurvedic Name:</h5>
+                            <p><?php the_sub_field('ayurvedic_name'); ?></p>
+                        <?php } ?>
 
-                        <h5>Parts Used:</h5>
-                        <p><?php the_sub_field('parts_used'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('parts_used' ) ) ) { ?>
+                            <h5>Parts Used:</h5>
+                            <p><?php the_sub_field('parts_used'); ?></p>
+                        <?php } ?>
 
-                        <h5>Native To:</h5>
-                        <p><?php the_sub_field('native_to'); ?></p>
+	                    <?php if ( ! ha_string_is_empty( get_sub_field('native_to' ) ) ) { ?>
+                            <h5>Native To:</h5>
+                            <p><?php the_sub_field('native_to'); ?></p>
+                        <?php } ?>
 
                         <hr class="my-4">
 
-                        <h5 class="print-margin">Geographic Distribution</h5>
-	                    <?php the_field('geographic_distribution'); ?>
+	                    <?php if ( ! ha_string_is_empty( get_field('geographic_distribution' ) ) ) { ?>
+                            <h5 class="print-margin">Geographic Distribution</h5>
+                            <?php the_field('geographic_distribution'); ?>
+                        <?php } ?>
 
-                        <h5>Botanical Description</h5>
-	                    <?php the_field('botanical_description'); ?>
+	                    <?php if ( ! ha_string_is_empty( get_field('botanical_description' ) ) ) { ?>
+                            <h5>Botanical Description</h5>
+                            <?php the_field('botanical_description'); ?>
+                        <?php } ?>
 
-                        <h5>Key Constituents</h5>
-	                    <?php the_field('key_constituents'); ?>
+	                    <?php if ( ! ha_string_is_empty( get_field('key_constituents' ) ) ) { ?>
+                            <h5>Key Constituents</h5>
+                            <?php the_field('key_constituents'); ?>
+                        <?php } ?>
 
-                        <h5>Sustainability Issues</h5>
-	                    <?php the_field('sustainability_issues'); ?>
+	                    <?php if ( ! ha_string_is_empty( get_field('sustainability_issues' ) ) ) { ?>
+                            <h5>Sustainability Issues</h5>
+                            <?php the_field('sustainability_issues'); ?>
+                        <?php } ?>
 
-                        <h5>Veterinary Use</h5>
-	                    <?php the_field('veterinary_use'); ?>
+                        <?php if ( ! ha_string_is_empty( get_field('veterinary_use' ) ) ) { ?>
+                            <h5>Veterinary Use</h5>
+                            <?php the_field('veterinary_use'); ?>
+                        <?php } ?>
 
-                        <h5>Harvesting Guidelines</h5>
-	                    <?php the_field('sustainability_issues'); ?>
+                        <?php if ( ! ha_string_is_empty( get_field('harvesting_guidelines' ) ) ) { ?>
+                            <h5>Harvesting Guidelines</h5>
+                            <?php the_field('harvesting_guidelines'); ?>
+                        <?php } ?>
                     </aside>
                     <?php
                 endwhile;
@@ -176,7 +196,14 @@ defined( 'ABSPATH' ) || exit;
                 <hr class="my-4">
 
                 <h4 class="mt-4">Scientific Research</h4>
-                <?php the_field('scientific_research'); ?>
+
+                <div id="scientific-research" class="collapse" aria-expanded="false">
+		            <?php the_field('scientific_research'); ?>
+                </div>
+
+                <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#scientific-research" role="button" aria-expanded="false" aria-controls="scientific-research">
+                    Show More
+                </a>
 
                 <h4 class="mt-4">Where to Buy</h4>
                 <?php the_field('where_to_buy'); ?>
