@@ -46,24 +46,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 <script>
     // TODO: move to separate JS, get it to compile correctly
     jQuery(document).ready(function($){
-        /*
-        // Single monograph image carousel
-        $('.image-carousel-nav').slick({
-            slidesToShow: 3,
-            asNavFor: '.image-carousel-primary'
-        });
-
-        $('.image-carousel-primary').slick({
-            slidesToShow: 1,
-            arrows: false
-        });
-         */
 
         $('.image-carousel-nav ul').slickLightbox({
             itemSelector: 'li > a'
         });
-
-        console.log('slick lightbox loaded');
 
         // Automatically fade in elements on page load
         $('.fade').addClass('show');
@@ -71,13 +57,13 @@ $container = get_theme_mod( 'understrap_container_type' );
         // Get the total number of paragraphs in the Uses section so we can insert image(s) at the halfway point
         var pHalfwayPoint = Math.floor( $('#uses p').length / 2 );
 
-        // Place in-content images at beginning and halfway through Uses content
-        $('.in-content-images > img').each(function(){
+        // Place in-content media items at beginning and halfway through Uses content
+        $('.in-content-images > *').each(function(){
             if ( $(this).hasClass('image0') ) {
-                // Prepend first image to the beginning of the Uses content
+                // Prepend first media item to the beginning of the Uses content
                 $('#uses').prepend($(this));
             } else {
-                // Prepend the second image (and any others added in the future) to the halfway point
+                // Prepend the second media item, and any others, to the halfway point
                 $('#uses p').eq(pHalfwayPoint).after($(this));
             }
         });

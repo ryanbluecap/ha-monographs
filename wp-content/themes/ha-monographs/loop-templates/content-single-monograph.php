@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<a class="d-block my-4" href="<?php bloginfo('url'); ?>/monographs/">&laquo; Back to Monographs List</a>
+<a class="d-block my-4 back" href="<?php bloginfo('url'); ?>/monographs/">&laquo; Back to Monographs List</a>
 
 <section class="monograph-details shadow">
     <div class="row">
@@ -127,10 +127,19 @@ defined( 'ABSPATH' ) || exit;
             <h3>Uses</h3>
 
             <div id="uses">
-            <?php the_field('uses'); ?>
+                <?php the_field('uses'); ?>
             </div>
 
             <aside class="d-none in-content-images">
+	            <?php if ( $video  = get_field( 'video_embed') ) {
+		            ?>
+                    <div class="alignright">
+			            <?php the_field('video_embed'); ?>
+                    </div>
+		            <?php
+	            }
+	            ?>
+
 		        <?php
 		        if ( $images = get_field('in_content_images') ) :
                     $i = 0;
@@ -176,16 +185,48 @@ defined( 'ABSPATH' ) || exit;
             </div>
             <div class="col-lg-6">
                 <h5 class="mt-4">Ways to Use</h5>
-                <?php the_field('ways_to_use'); ?>
+                <?php
+                    $ways_to_use = get_the_terms($post->ID, 'monograph_way_to_use');
+
+                    foreach ( $ways_to_use as $item ) {
+                        ?>
+                        <a href="<?php echo get_term_link( $item->term_id ); ?>"><?php echo $item->name; ?></a>
+                        <?php
+                    }
+                ?>
 
                 <h5 class="mt-4">Actions</h5>
-                <?php the_field('actions'); ?>
+	            <?php
+                    $actions = get_the_terms($post->ID, 'monograph_action');
+
+                    foreach ( $actions as $item ) {
+                        ?>
+                        <a href="<?php echo get_term_link( $item->term_id ); ?>"><?php echo $item->name; ?></a>
+                        <?php
+                    }
+	            ?>
 
                 <h5 class="mt-4">Taste</h5>
-                <?php the_field('taste'); ?>
+	            <?php
+                    $taste = get_the_terms($post->ID, 'monograph_taste');
+
+                    foreach ( $taste as $item ) {
+                        ?>
+                        <a href="<?php echo get_term_link( $item->term_id ); ?>"><?php echo $item->name; ?></a>
+                        <?php
+                    }
+	            ?>
 
                 <h5 class="mt-4">Energy</h5>
-                <?php the_field('energy'); ?>
+	            <?php
+                    $energy = get_the_terms($post->ID, 'monograph_energy');
+
+                    foreach ( $energy as $item ) {
+                        ?>
+                        <a href="<?php echo get_term_link( $item->term_id ); ?>"><?php echo $item->name; ?></a>
+                        <?php
+                    }
+	            ?>
             </div>
         </div>
     </aside>

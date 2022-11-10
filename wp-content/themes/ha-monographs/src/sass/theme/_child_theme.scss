@@ -64,7 +64,7 @@ h6 {
   }
 
   .monograph-card {
-    max-width: 80%;
+    max-width: 96%;
     margin: auto;
     transition: .2s fade;
 
@@ -158,8 +158,10 @@ h6 {
       flex-wrap: wrap;
 
       img {
-        margin-bottom: 0 !important;
-        max-width: 100px;
+        &.primary {
+          max-width: 100%;
+          margin: auto;
+        }
       }
     }
   }
@@ -179,7 +181,8 @@ h6 {
     transition: .2s all;
 
     @media (min-width: 992px) {
-      padding-right: 100px;
+      max-width: 82%;
+      margin-left: 0;
     }
 
     a {
@@ -202,17 +205,20 @@ h6 {
   }
 
   a.print {
-    display: inline-block;
+    display: block;
     text-decoration: none;
-    margin: 0 0 30px;
-    float: left;
+    margin: 30px auto;
+    float: none;
+    width: 85px;
     padding: 5px 10px;
     background: scale-color($white, $lightness: -5%);
     color: $green;
     transition: .2s all;
 
     @media (min-width: 991px) {
+      display: inline-block;
       margin: 0;
+      width: auto;
       float: right;
     }
 
@@ -232,10 +238,14 @@ h6 {
   }
 
   h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     letter-spacing: 2px;
     color: $green;
     text-transform: uppercase;
+
+    @media (min-width: 992px) {
+      font-size: 4rem;
+    }
   }
 
   .monograph-name {
@@ -250,6 +260,17 @@ h6 {
       font-weight: 700;
       margin-top: 20px;
     }
+  }
+
+  .alignright {
+    @media (max-width: 991px) {
+      margin-left: 0;
+    }
+  }
+
+  iframe {
+    max-width: 100%;
+    margin: 60px 0 30px;
   }
 
   // Expandable sections for long lists/text
@@ -300,6 +321,22 @@ h6 {
   }
 }
 
+/* Pagination */
+
+.pagination {
+  justify-content: center;
+  margin-top: 15px;
+
+  .page-link {
+    color: $green;
+  }
+
+  .page-item.active .page-link {
+    color: $green;
+    font-weight: 700;
+    border-color: $green;
+  }
+}
 
 /* Print Styles */
 
@@ -321,12 +358,24 @@ h6 {
       img {
         margin-bottom: 0 !important;
         max-width: 100px;
+
+        &.primary {
+          max-width: 250px;
+          padding-bottom: 30px;
+        }
       }
     }
 
+    a.back,
     a.print,
-    btn.expand {
-      display: none;
+    .btn-expand,
+    .post-navigation {
+      display: none !important;
+    }
+
+    .monograph-details .collapse:not(.show) {
+      height: auto;
+      overflow: visible;
     }
 
     .print-margin {
@@ -336,6 +385,10 @@ h6 {
     #uses {
       img {
         max-width: 200px;
+      }
+
+      iframe {
+        display: none;
       }
     }
 
@@ -347,12 +400,3 @@ h6 {
   }
 }
 
-.page-link {
-  color: $green;
-}
-
-.page-item.active .page-link {
-  color: $green;
-  font-weight: 700;
-  border-color: $green;
-}
