@@ -43,7 +43,7 @@ defined( 'ABSPATH' ) || exit;
 
             <div class="monograph-name">
                 <h1 class="mt-5 fade"><?php the_title(); ?></h1>
-                <h4 class="fade"><em><?php the_field('latin_name'); ?></em></h4>
+                <h4 class="fade"><?php the_field('latin_name'); ?></h4>
             </div>
 
             <?php

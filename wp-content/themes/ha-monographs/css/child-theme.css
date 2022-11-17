@@ -15472,6 +15472,10 @@ h6,
   font-style: normal;
 }
 
+.page-title {
+  margin: 15px;
+}
+
 .navbar-light .navbar-brand {
   font-size: 2rem;
   font-family: trajan-pro-3, serif;
@@ -15517,13 +15521,16 @@ h6,
 }
 @media (min-width: 992px) {
   .monographs-list .monograph-card {
-    max-width: 25%;
+    width: 25%;
   }
 }
 .monographs-list .monograph-card > div {
   background-color: #fff;
   border: 1px solid #eaeaea;
   transition: 0.2s all;
+}
+.monographs-list .monograph-card img {
+  width: 100%;
 }
 .monographs-list .monograph-card a {
   color: inherit;
@@ -15541,6 +15548,75 @@ h6,
 }
 .monographs-list .monograph-card:hover a, .monographs-list .monograph-card:focus a, .monographs-list .monograph-card:active a {
   color: #93b650 !important;
+}
+
+/* Search Bar and Filters */
+.btn-search {
+  position: relative;
+  top: -2px;
+}
+
+.btn-sort {
+  font-family: baskerville-display-pt, serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  display: inline-block;
+  background: #dadada;
+  color: rgba(0, 0, 0, 0.7) !important;
+  margin: 0 15px;
+}
+
+.taxonomy-search {
+  display: none;
+  background: #fff;
+  position: fixed;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+}
+@media (min-width: 992px) {
+  .taxonomy-search {
+    width: 25%;
+  }
+}
+.taxonomy-search .close {
+  display: block;
+  margin: 15px 0;
+  text-align: right;
+  font-family: baskerville-display-pt, serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.7);
+}
+.taxonomy-search select {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-alphabetical {
+  display: none;
+  font-family: baskerville-display-pt, serif;
+  list-style-type: none;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .search-alphabetical {
+    display: flex;
+  }
+}
+.search-alphabetical span {
+  font-style: italic;
+  text-transform: lowercase;
+}
+.search-alphabetical li {
+  padding: 0 3px;
+}
+.search-alphabetical a {
+  text-decoration: none;
 }
 
 .single-monograph section {

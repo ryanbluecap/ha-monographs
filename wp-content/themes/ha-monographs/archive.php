@@ -26,6 +26,8 @@ $container = 'container-fluid';
 			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
 
 			<main class="site-main" id="main">
+				<?php get_template_part('search-templates/searchbar' ); ?>
+
                 <?php
 				if ( have_posts() ) {
 					?>

@@ -136,3 +136,22 @@ function ha_monographs_sort_order($query){
 add_image_size('monograph_main', 800, 1200, true );
 add_image_size('monograph_archive', 400, 600, true );
 add_image_size('monograph_in_content', 500, 800 );
+
+/*
+ * Add alphabetical letters for indexing monographs
+*/
+
+//add_action('init', 'ha_alphabetical_monographs');
+function ha_alphabetical_monographs(){
+	$args = array(
+		'post_type'     => 'monograph',
+		'numberposts'   => -1
+		);
+
+	$monographs = get_posts( $args );
+	$taxonomy = 'alphabetical_letter';
+
+	foreach ( $monographs as $monograph ) {
+		//wp_set_post_terms( $monograph->ID, strtolower(substr($monograph->post_title, 0, 1)), $taxonomy );
+	}
+}

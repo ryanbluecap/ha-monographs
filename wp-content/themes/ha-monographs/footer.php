@@ -76,6 +76,22 @@ $container = get_theme_mod( 'understrap_container_type' );
                 $(this).html('Show Less');
             }
         });
+
+        /* Search Filters  */
+
+        $('.btn-sort, .close').click(function(){
+            $('.taxonomy-search').toggle('fast');
+
+            return false;
+        });
+
+        $('.taxonomy-search select').change(function(){
+           var slug = $(this).attr('name').replace('cat_', '');
+           var value = $(this).val();
+           var host = 'https://' + window.location.hostname;
+
+           window.location.href = host + '/monograph_' + slug + '/' + value + '/';
+        });
     });
 
 </script>
