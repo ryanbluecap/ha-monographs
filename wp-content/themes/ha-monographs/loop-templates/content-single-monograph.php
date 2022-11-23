@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
 <a class="d-block my-4 back" href="<?php bloginfo('url'); ?>/monographs/">&laquo; Back to Monographs List</a>
 
 <section class="monograph-details shadow">
-    <div class="row">
+    <div class="row d-flex align-items-start">
         <div class="col-lg-5 col-img">
             <?php
                 if ( $images = get_field('image_carousel') ) :
@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 	            endif;
 	        ?>
         </div>
-        <div class="col-lg-7">
+        <div class="col-lg-7 col-meta">
             <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
 
            <?php ha_monographs_post_nav(); ?>

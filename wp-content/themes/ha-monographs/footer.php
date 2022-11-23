@@ -46,6 +46,18 @@ $container = get_theme_mod( 'understrap_container_type' );
 <script>
     // TODO: move to separate JS, get it to compile correctly
     jQuery(document).ready(function($){
+        // Open all external links in a new window
+        // TODO: scope this to content area only for better performance
+        $('.monograph-details a').each(function() {
+            var a = new RegExp('/' + window.location.host + '/');
+            if(!a.test(this.href)) {
+                $(this).click(function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    window.open(this.href, '_blank');
+                });
+            }
+        });
 
         $('.image-carousel-nav ul').slickLightbox({
             itemSelector: 'li > a'
@@ -54,17 +66,23 @@ $container = get_theme_mod( 'understrap_container_type' );
         // Automatically fade in elements on page load
         $('.fade').addClass('show');
 
-        // Get the total number of paragraphs in the Uses section so we can insert image(s) at the halfway point
-        var pHalfwayPoint = Math.floor( $('#uses p').length / 2 );
+        // Get the total number of paragraphs in the Uses section so we can insert image(s) at evenly spaced points
+        var pCount = Math.floor( $('#uses p').length );
 
         // Place in-content media items at beginning and halfway through Uses content
-        $('.in-content-images > *').each(function(){
+        var imgCount = $('.in-content-images > img').length;
+        var pNum = 0;
+
+        $('.in-content-images > img').each(function(){
             if ( $(this).hasClass('image0') ) {
-                // Prepend first media item to the beginning of the Uses content
+                // Prepend first image to the beginning of the Uses content
                 $('#uses').prepend($(this));
             } else {
-                // Prepend the second media item, and any others, to the halfway point
-                $('#uses p').eq(pHalfwayPoint).after($(this));
+                pNum = Math.floor( pCount / imgCount );
+
+                // Prepend any other images evenly throughout the content
+                $('#uses p').eq(pNum).after($(this));
+                imgCount--;
             }
         });
 
