@@ -23,7 +23,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 				while ( have_posts() ) {
 					the_post();
 					get_template_part( 'loop-templates/content', 'single-monograph' );
-					understrap_post_nav();
+					ha_monographs_post_nav();
 				}
 				?>
 

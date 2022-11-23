@@ -16,34 +16,50 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-5 col-img">
             <?php
                 if ( $images = get_field('image_carousel') ) :
-                    $primary_image_url = wp_get_attachment_image_src($images[0]['id'], 'monograph_main');
+                    $featured_image_id = get_post_thumbnail_id();
+                    $primary_image_url = get_the_post_thumbnail_url();
             ?>
-                <img class="primary mb-2 shadow-sm fade" src="<?php echo $primary_image_url[0]; ?>" alt="<?php echo $images[0]['alt']; ?>" title="<?php echo $images[0]['title']; ?>">
+                <img class="primary mb-2 shadow-sm fade" src="<?php echo $primary_image_url; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
 
                 <div class="d-flex image-carousel-nav">
                     <ul>
                     <?php
-                        foreach ( $images as $image ) {
-                            $image_url = wp_get_attachment_image_src($image['id'], 'monograph_main');
+                        // Show featured image first, if set
+                        if ( $featured_image = wp_get_attachment_image($featured_image_id, 'monograph_main') ) {
                             ?>
-                            <li><a href="<?php echo esc_url( $image_url[0] ); ?>"><img class="secondary" src="<?php echo esc_url( $image_url[0] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>"></a></li>
-                            <?php
+                            <li><a href="<?php echo $primary_image_url; ?>"><?php echo $featured_image; ?></a></li>
+                    <?php
+                        }
+
+                        foreach ( $images as $image ) {
+                            if ( $image['id'] !== $featured_image_id ) {
+                                $image_url = wp_get_attachment_image_src($image['id'], 'monograph_main');
+                                ?>
+                                <li><a href="<?php echo esc_url( $image_url[0] ); ?>"><img class="secondary" src="<?php echo esc_url( $image_url[0] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>"></a></li>
+                                <?php
+                            }
                         }
                     ?>
                     </ul>
                 </div>
             <?php
                 endif;
-            ?>
+
+                if ( $video  = get_field( 'video_embed') ) :
+                    ?>
+                    <?php the_field('video_embed'); ?>
+                    <?php
+	            endif;
+	        ?>
         </div>
         <div class="col-lg-7">
             <a class="print dashicons-before dashicons-printer" href="javascript:window.print()">Print</a>
 
-           <?php understrap_post_nav(); ?>
+           <?php ha_monographs_post_nav(); ?>
 
             <div class="monograph-name">
                 <h1 class="mt-5 fade"><?php the_title(); ?></h1>
-                <h4 class="fade"><?php the_field('latin_name'); ?></h4>
+                <h4 class="fade"><em><?php the_field('latin_name'); ?></em></h4>
             </div>
 
             <?php
@@ -51,32 +67,32 @@ defined( 'ABSPATH' ) || exit;
                     ?>
                     <aside class="mt-5 monograph-meta fade">
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('common_name' ) ) ) { ?>
-                            <h5>Common Name:</h5>
+                            <h5>Common Name</h5>
                             <p><?php the_sub_field('common_name'); ?></p>
                         <?php } ?>
 
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('family' ) ) ) { ?>
-                            <h5>Family:</h5>
+                            <h5>Family</h5>
                             <p><?php the_sub_field('family'); ?></p>
                         <?php } ?>
 
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('tcm_name' ) ) ) { ?>
-                            <h5>TCM Name:</h5>
+                            <h5>Chinese Medicine Name</h5>
                             <p><?php the_sub_field('tcm_name'); ?></p>
                         <?php } ?>
 
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('ayurvedic_name' ) ) ) { ?>
-                            <h5>Ayurvedic Name:</h5>
+                            <h5>Ayurvedic Name</h5>
                             <p><?php the_sub_field('ayurvedic_name'); ?></p>
                         <?php } ?>
 
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('parts_used' ) ) ) { ?>
-                            <h5>Parts Used:</h5>
+                            <h5>Parts Used</h5>
                             <p><?php the_sub_field('parts_used'); ?></p>
                         <?php } ?>
 
 	                    <?php if ( ! ha_string_is_empty( get_sub_field('native_to' ) ) ) { ?>
-                            <h5>Native To:</h5>
+                            <h5>Native To</h5>
                             <p><?php the_sub_field('native_to'); ?></p>
                         <?php } ?>
 
@@ -131,16 +147,7 @@ defined( 'ABSPATH' ) || exit;
             </div>
 
             <aside class="d-none in-content-images">
-	            <?php if ( $video  = get_field( 'video_embed') ) {
-		            ?>
-                    <div class="alignright">
-			            <?php the_field('video_embed'); ?>
-                    </div>
-		            <?php
-	            }
-	            ?>
-
-		        <?php
+	            <?php
 		        if ( $images = get_field('in_content_images') ) :
                     $i = 0;
 			        foreach ( $images as $image ) {
@@ -177,14 +184,14 @@ defined( 'ABSPATH' ) || exit;
     <aside class="usage-details">
         <div class="row">
             <div class="col-lg-6">
-                <h5 class="mt-4">Adult Dose</h5>
+                <h4 class="mt-4">Adult Dose</h4>
                 <?php the_field('adult_dose'); ?>
 
-                <h5 class="mt-4">Safety</h5>
+                <h4 class="mt-4">Safety</h4>
                 <?php the_field('safety'); ?>
             </div>
             <div class="col-lg-6">
-                <h5 class="mt-4">Ways to Use</h5>
+                <h4 class="mt-4">Ways to Use</h4>
                 <?php
                     $ways_to_use = get_the_terms($post->ID, 'monograph_way_to_use');
 
@@ -195,7 +202,7 @@ defined( 'ABSPATH' ) || exit;
                     }
                 ?>
 
-                <h5 class="mt-4">Actions</h5>
+                <h4 class="mt-4">Actions</h4>
 	            <?php
                     $actions = get_the_terms($post->ID, 'monograph_action');
 
@@ -206,7 +213,7 @@ defined( 'ABSPATH' ) || exit;
                     }
 	            ?>
 
-                <h5 class="mt-4">Taste</h5>
+                <h4 class="mt-4">Taste</h4>
 	            <?php
                     $taste = get_the_terms($post->ID, 'monograph_taste');
 
@@ -217,9 +224,9 @@ defined( 'ABSPATH' ) || exit;
                     }
 	            ?>
 
-                <h5 class="mt-4">Energy</h5>
+                <h4 class="mt-4">Energy</h4>
 	            <?php
-                    $energy = get_the_terms($post->ID, 'monograph_energy');
+                    $energy = get_the_terms($post->ID, 'monograph_energetic');
 
                     foreach ( $energy as $item ) {
                         ?>

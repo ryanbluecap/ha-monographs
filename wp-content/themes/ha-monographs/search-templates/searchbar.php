@@ -5,7 +5,7 @@
             $monograph_taxonomies = array(
                     'action'        => 'Actions',
                     'taste'         => 'Taste',
-                    'energy'        => 'Energies',
+                    'energetic'        => 'Energetics',
                     'way_to_use'    => 'Ways to Use'
             );
 
@@ -16,6 +16,7 @@
                     'name'              => 'cat_'. $key,
                     'show_option_none'  => __( $value ),
                     'option_none_value' => '',
+                    'orderby'           => 'name',
                     'order'             => 'ASC',
                     'hide_empty'        => 0
                 );

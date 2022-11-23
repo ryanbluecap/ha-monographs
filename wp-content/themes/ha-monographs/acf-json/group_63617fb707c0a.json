@@ -10,15 +10,7 @@
             "type": "number",
             "instructions": "Used to match Monographs from the old Angular database to the new WordPress posts.",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_63642fd1cf6dd",
-                        "operator": "==contains",
-                        "value": "adfgadfgadfgadfgadgf"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -221,7 +213,7 @@
                 },
                 {
                     "key": "field_63617ff0f1c8f",
-                    "label": "TCM Name",
+                    "label": "Chinese Medicine Name",
                     "name": "tcm_name",
                     "aria-label": "",
                     "type": "wysiwyg",
@@ -588,5 +580,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1668201408
+    "modified": 1669069991
 }

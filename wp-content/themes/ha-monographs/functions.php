@@ -109,7 +109,7 @@ function ha_string_is_empty( $text ) {
 		return true;
 	}
 
-	if ( $text == 'N/A' || $text == 'NULL' ) {
+	if ( $text == 'NULL' ) {
 		return true;
 	}
 
@@ -121,12 +121,12 @@ function ha_string_is_empty( $text ) {
  */
 add_action( 'pre_get_posts', 'ha_monographs_sort_order');
 function ha_monographs_sort_order($query){
-	if( is_post_type_archive( 'monograph' ) ) :
+	if( is_archive()  ) :
 		//If you wanted it for the archive of a custom post type use: is_post_type_archive( $post_type )
 		//Set the order ASC or DESC
 		$query->set( 'order', 'ASC' );
 		//Set the orderby
-		$query->set( 'orderby', 'title' );
+		$query->set( 'orderby', 'name' );
 	endif;
 }
 
@@ -136,6 +136,70 @@ function ha_monographs_sort_order($query){
 add_image_size('monograph_main', 800, 1200, true );
 add_image_size('monograph_archive', 400, 600, true );
 add_image_size('monograph_in_content', 500, 800 );
+
+/*
+ * Replacement next/previous post nat to order alphabetically.
+ */
+if ( ! function_exists( 'ha_monographs_post_nav' ) ) {
+	/**
+	 * Display navigation to next/previous post when applicable.
+	 */
+	function ha_monographs_post_nav() {
+		// Post Link Plus plugin: we have to include all these keys to avoid PHP warnings...
+		$args = array(
+			'order_by' => 'post_name',
+			'order_2nd' => NULL,
+			'num_results' => NULL,
+			'in_same_meta' => NULL,
+			'ex_cats' => NULL,
+			'in_cats' => NULL,
+			'ex_posts' => NULL,
+			'in_posts' => NULL,
+			'in_same_cat' => NULL,
+			'in_same_tax' => NULL,
+			'in_same_format' => NULL,
+			'in_same_author' => NULL,
+			'end_post' => NULL,
+			'loop' => NULL
+		);
+
+		// Don't print empty markup if there's nowhere to navigate.
+		$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post_plus( $args, true );
+		$next     = get_adjacent_post_plus( $args, false );
+		if ( ! $next && ! $previous ) {
+			return;
+		}
+		?>
+		<nav class="container navigation post-navigation">
+			<h2 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'understrap' ); ?></h2>
+			<div class="d-flex nav-links justify-content-between">
+				<?php
+				if ( get_previous_post_link() ) {
+					$args = array(
+						'order_by' => 'post_name',
+						'order_2nd' => NULL,
+						'format' => '<span class="nav-previous">%link</span>',
+						'link' => _x( '<i class="fa fa-angle-left"></i>&nbsp;%title', 'Previous post link', 'understrap' )
+					);
+
+					adjacent_post_link_plus( $args, '', true );
+				}
+				if ( get_next_post_link() ) {
+					$args = array(
+						'order_by' => 'post_name',
+						'order_2nd' => NULL,
+						'format' => '<span class="nav-next">%link</span>',
+						'link' => _x( '%title&nbsp;<i class="fa fa-angle-right"></i>', 'Next post link', 'understrap' )
+					);
+					adjacent_post_link_plus( $args, '', false );
+				}
+				?>
+			</div><!-- .nav-links -->
+		</nav><!-- .navigation -->
+		<?php
+	}
+}
+
 
 /*
  * Add alphabetical letters for indexing monographs
