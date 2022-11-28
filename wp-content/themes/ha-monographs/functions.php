@@ -205,17 +205,28 @@ if ( ! function_exists( 'ha_monographs_post_nav' ) ) {
  * Add alphabetical letters for indexing monographs
 */
 
-//add_action('init', 'ha_alphabetical_monographs');
-function ha_alphabetical_monographs(){
-	$args = array(
-		'post_type'     => 'monograph',
-		'numberposts'   => -1
-		);
+add_action('save_post', 'ha_monograph_save_first_letter');
+function ha_monograph_save_first_letter( $post_id ){
+	// verify if this is an auto save routine.
+	// If it is our form has not been submitted, so we don't want to do anything
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+		return $post_id;
 
-	$monographs = get_posts( $args );
+	//check location (only run for monographs)
+	$limitPostTypes = array('monograph');
+
+	if (! in_array( get_post_type( $post_id ), $limitPostTypes) )
+		return $post_id;
+
+	// Check permissions
+	if ( !current_user_can( 'edit_post', $post_id ) )
+		return $post_id;
+
+	// OK, we're authenticated: we need to find and save the data
 	$taxonomy = 'alphabetical_letter';
 
-	foreach ( $monographs as $monograph ) {
-		//wp_set_post_terms( $monograph->ID, strtolower(substr($monograph->post_title, 0, 1)), $taxonomy );
-	}
+	wp_set_post_terms( $post_id, strtolower(substr( get_the_title( $post_id ), 0, 1)), $taxonomy );
+
+    // delete the transient that is storing the alphabet letters
+	delete_transient( 'ha_archive_alphabet');
 }

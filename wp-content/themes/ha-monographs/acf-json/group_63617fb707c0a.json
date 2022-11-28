@@ -10,12 +10,21 @@
             "type": "number",
             "instructions": "Used to match Monographs from the old Angular database to the new WordPress posts.",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_63642e6b879b7",
+                        "operator": "==contains",
+                        "value": "asdfadfhdgshdnfnbfdgbgfsbjknsdfbnj"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
+            "relevanssi_exclude": 0,
             "default_value": "",
             "min": "",
             "max": "",
@@ -514,5 +523,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1669230236
+    "modified": 1669597805
 }
