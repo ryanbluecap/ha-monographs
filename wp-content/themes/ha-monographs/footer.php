@@ -48,7 +48,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     jQuery(document).ready(function($){
         // Open all external links in a new window
         // TODO: scope this to content area only for better performance
-        $('.monograph-details a').each(function() {
+        $('.monograph-details a:not(.print)').each(function() {
             var a = new RegExp('/' + window.location.host + '/');
             if(!a.test(this.href)) {
                 $(this).click(function(event) {

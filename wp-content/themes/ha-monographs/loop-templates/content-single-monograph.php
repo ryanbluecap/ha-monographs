@@ -18,9 +18,11 @@ defined( 'ABSPATH' ) || exit;
                 if ( $images = get_field('image_carousel') ) :
                     $featured_image_id = get_post_thumbnail_id();
                     $primary_image_url = get_the_post_thumbnail_url();
-            ?>
+                ?>
+
                 <img class="primary mb-2 shadow-sm fade" src="<?php echo $primary_image_url; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
 
+                <?php if ( count( $images) > 1 ) : ?>
                 <div class="d-flex image-carousel-nav">
                     <ul>
                     <?php
@@ -42,6 +44,7 @@ defined( 'ABSPATH' ) || exit;
                     ?>
                     </ul>
                 </div>
+                <?php endif; ?>
             <?php
                 endif;
 
