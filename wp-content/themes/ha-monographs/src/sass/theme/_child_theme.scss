@@ -194,7 +194,7 @@ h6 {
 .single-monograph {
   section {
     background: $white;
-    font-size: 1rem;
+    font-size: .9rem;
     margin-bottom: 30px;
     padding: 20px;
   }
@@ -393,10 +393,6 @@ h6 {
       margin: 5px 0;
     }
   }
-
-  .copyright {
-    font-size: .9rem;
-  }
 }
 
 /* Pagination */
@@ -427,16 +423,17 @@ h6 {
   .single-monograph {
     section {
       box-shadow: none !important;
+      padding: 0;
     }
 
     // Force two-column display for image and meta
 
     .col-img {
-      width: 40.66666667% !important
+      width: 35% !important
     }
 
     .col-meta {
-      width: 58.33333333% !important;
+      width: 65% !important;
     }
 
     .col-img iframe,

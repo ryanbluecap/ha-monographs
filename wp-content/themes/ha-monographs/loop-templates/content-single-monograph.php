@@ -143,11 +143,13 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-12">
             <hr class="my-4">
 
-            <h3>Uses</h3>
+	        <?php if ( ! ha_string_is_empty( get_field('uses') ) ) { ?>
+                <h3>Uses</h3>
 
-            <div id="uses">
-                <?php the_field('uses'); ?>
-            </div>
+                <div id="uses">
+                    <?php the_field('uses'); ?>
+                </div>
+	        <?php } ?>
 
             <aside class="d-none in-content-images">
 	            <?php
@@ -170,15 +172,17 @@ defined( 'ABSPATH' ) || exit;
         <div class="col-lg-12">
             <hr class="my-4">
 
-            <h4>References</h4>
+	        <?php if ( ! ha_string_is_empty( get_field('references') ) ) { ?>
+                <h4>References</h4>
 
-            <div id="references" class="collapse" aria-expanded="false">
-                <?php the_field('references'); ?>
-            </div>
+                <div id="references" class="collapse" aria-expanded="false">
+                    <?php the_field('references'); ?>
+                </div>
 
-            <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#references" role="button" aria-expanded="false" aria-controls="references">
-                Show More
-            </a>
+                <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#references" role="button" aria-expanded="false" aria-controls="references">
+                    Show More
+                </a>
+            <?php } ?>
         </div>
     </div>
 
@@ -187,11 +191,15 @@ defined( 'ABSPATH' ) || exit;
     <aside class="usage-details">
         <div class="row">
             <div class="col-lg-6">
-                <h4 class="mt-4">Adult Dose</h4>
-                <?php the_field('adult_dose'); ?>
+                <?php if ( ! ha_string_is_empty( get_field('adult_dose') ) ) { ?>
+                    <h4 class="mt-4">Adult Dose</h4>
+	                <?php the_field('adult_dose'); ?>
+                <?php } ?>
 
-                <h4 class="mt-4">Safety</h4>
-                <?php the_field('safety'); ?>
+	            <?php if ( ! ha_string_is_empty( get_field('safety') ) ) { ?>
+                    <h4 class="mt-4">Safety</h4>
+                    <?php the_field('safety'); ?>
+                <?php } ?>
             </div>
             <div class="col-lg-6">
                 <h4 class="mt-4">Ways to Use</h4>
@@ -246,18 +254,22 @@ defined( 'ABSPATH' ) || exit;
             <aside class="external-links">
                 <hr class="my-4">
 
-                <h4 class="mt-4">Scientific Research</h4>
+	            <?php if ( ! ha_string_is_empty( get_field('scientific_research') ) ) { ?>
+                    <h4 class="mt-4">Scientific Research</h4>
 
-                <div id="scientific-research" class="collapse" aria-expanded="false">
-		            <?php the_field('scientific_research'); ?>
-                </div>
+                    <div id="scientific-research" class="collapse" aria-expanded="false">
+                        <?php the_field('scientific_research'); ?>
+                    </div>
 
-                <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#scientific-research" role="button" aria-expanded="false" aria-controls="scientific-research">
-                    Show More
-                </a>
+                    <a class="btn btn-primary btn-expand collapsed" data-bs-toggle="collapse" href="#scientific-research" role="button" aria-expanded="false" aria-controls="scientific-research">
+                        Show More
+                    </a>
+                <?php } ?>
 
-                <h4 class="mt-4">Where to Buy</h4>
-                <?php the_field('where_to_buy'); ?>
+	            <?php if ( ! ha_string_is_empty( get_field('where_to_buy') ) ) { ?>
+                    <h4 class="mt-4">Where to Buy</h4>
+                    <?php echo the_field('where_to_buy'); ?>
+                <?php } ?>
             </aside>
         </div>
     </div>

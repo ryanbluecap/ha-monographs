@@ -230,3 +230,16 @@ function ha_monograph_save_first_letter( $post_id ){
     // delete the transient that is storing the alphabet letters
 	delete_transient( 'ha_archive_alphabet');
 }
+
+add_filter('manage_monograph_posts_columns', 'ha_add_featured_image_column');
+function ha_add_featured_image_column($defaults) {
+	$defaults['featured_image'] = 'Image';
+	return $defaults;
+}
+
+add_action('manage_monograph_posts_custom_column', 'ha_show_featured_image_column', 10, 2);
+function ha_show_featured_image_column($column_name, $post_id) {
+	if ($column_name == 'featured_image') {
+		echo get_the_post_thumbnail($post_id, array(75, 75) );
+	}
+}
