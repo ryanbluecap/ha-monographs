@@ -44,7 +44,7 @@ function theme_enqueue_styles() {
 	wp_enqueue_style( 'dashicons' );
 
 	// Slick and Slick Lightbox for image carousels
-	wp_enqueue_style( 'slick', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.csss' );
+	wp_enqueue_style( 'slick', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css' );
 	wp_enqueue_style( 'slick-theme', '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css', array('slick') );
 	wp_enqueue_style( 'slick-lightbox', '//cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css', array('slick', 'slick-theme') );
 	wp_enqueue_script( 'slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery') );
@@ -53,6 +53,8 @@ function theme_enqueue_styles() {
  	wp_enqueue_style( 'child-understrap-styles', get_stylesheet_directory_uri() . $theme_styles, array(), $the_theme->get( 'Version' ) );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'child-understrap-scripts', get_stylesheet_directory_uri() . $theme_scripts, array(), $the_theme->get( 'Version' ), true );
+	wp_enqueue_script( 'ha-monographs', get_stylesheet_directory_uri() . "/js/ha-monographs{$suffix}.js", array('jquery', 'slick', 'slick-lightbox'), '', true );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
