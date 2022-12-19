@@ -15746,9 +15746,9 @@ h6,
   font-weight: 700;
   margin-top: 20px;
 }
-@media (max-width: 991px) {
-  .single-monograph .alignright {
-    margin-left: 0;
+@media (min-width: 992px) {
+  .single-monograph #uses img {
+    max-width: 450px;
   }
 }
 .single-monograph iframe {

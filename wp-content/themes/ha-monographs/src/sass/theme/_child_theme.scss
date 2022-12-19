@@ -342,9 +342,9 @@ h6 {
     }
   }
 
-  .alignright {
-    @media (max-width: 991px) {
-      margin-left: 0;
+  #uses img {
+    @media (min-width: 992px) {
+      max-width: 450px;
     }
   }
 

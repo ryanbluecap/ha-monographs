@@ -1,5 +1,5 @@
 <aside class="taxonomy-search shadow">
-    <a class="close" href="#">View All Monographs <i class="fa fa-close"></i></a>
+    <a class="close" href="#">close <i class="fa fa-close"></i></a>
     <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
         <?php
             $monograph_taxonomies = array(
