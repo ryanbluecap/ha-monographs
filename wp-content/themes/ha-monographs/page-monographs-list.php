@@ -1,6 +1,12 @@
 <?php
 /* Template Name: Monographs List */
 
+// Redirect to access denied page if not logged in as a current Herbarium member.
+if(mm_member_decision(array("isMember"=>"false")) || mm_member_decision(array("membershipId"=>"1")))
+{
+   wp_redirect("/mm-error/?code=100020");
+}
+
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
