@@ -15565,6 +15565,9 @@ h6,
   color: rgba(0, 0, 0, 0.7) !important;
   margin: 0 15px;
 }
+.single-monograph .btn-sort {
+  margin-left: 0;
+}
 
 .taxonomy-search {
   display: none;
@@ -15750,6 +15753,15 @@ h6,
   .single-monograph #uses img {
     max-width: 450px;
   }
+}
+.single-monograph blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1.3rem;
+  font-family: baskerville-display-pt, serif;
+  font-style: italic;
+  line-height: 2.4rem;
+  border-left: 5px solid #eee;
 }
 .single-monograph iframe {
   max-width: 100%;
