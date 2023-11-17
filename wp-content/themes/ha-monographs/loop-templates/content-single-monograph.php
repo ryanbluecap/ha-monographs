@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit;
 
                         foreach ( $images as $image ) {
                             if ( $image['id'] !== $featured_image_id ) {
-                                $image_url = wp_get_attachment_image_src($image['id'], 'monograph_main');
+                                $image_url = wp_get_attachment_image_src($image['id'], 'large');
                                 ?>
                                 <li><a href="<?php echo esc_url( $image_url[0] ); ?>"><img class="secondary" src="<?php echo esc_url( $image_url[0] ); ?>" alt="<?php echo $image['alt']; ?>" title="<?php echo $image['title']; ?>"></a></li>
                                 <?php
